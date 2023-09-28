@@ -1,0 +1,40 @@
+*&---------------------------------------------------------------------*
+*& Report ZDAYWEEK
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZDAYWEEK.
+
+DATA: lv_dayname TYPE string.
+
+
+
+SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
+
+  PARAMETERS: lv_date TYPE d.
+
+SELECTION-SCREEN END OF BLOCK B1.
+
+DATA: lv_weekday TYPE sy-index.
+
+lv_weekday = lv_date MOD 7.
+
+CASE lv_weekday.
+  WHEN 1.
+    lv_dayname = 'Воскресенье'.
+  WHEN 2.
+    lv_dayname = 'Понедельник'.
+  WHEN 3.
+    lv_dayname = 'Вторник'.
+  WHEN 4.
+    lv_dayname = 'Среда'.
+  WHEN 5.
+    lv_dayname = 'Четверг'.
+  WHEN 5.
+    lv_dayname = 'Пятница'.
+  WHEN 7.
+    lv_dayname = 'Суббота'.
+ENDCASE.
+
+
+WRITE: lv_date, 'is', lv_dayname.
